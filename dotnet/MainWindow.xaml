@@ -1,0 +1,72 @@
+﻿<Window x:Class="dotnet.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:dotnet"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="500" Width="800"
+        Loaded="Window_Loaded">
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <Label Content="Quản lý thông tin nhân viên" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Foreground="Blue" />
+
+        <Border Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Grid.RowSpan="7" BorderThickness="2" BorderBrush="Green" Background="Beige"/>
+
+        <Label HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5"  Content="Mã nhân viên:" Grid.Row="1" Grid.Column="0"/>
+        <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Width="122" Height="20" Margin="10,0,0,0" Name="txtMaNV" Grid.Row="1" Grid.Column="1"/>
+
+        <Label HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5"  Content="Họ tên:" Grid.Row="2" Grid.Column="0"/>
+        <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Width="202" Height="20" Margin="10,0,0,0" Name="txtHoten" Grid.Row="2" Grid.Column="1"/>
+
+        <Label HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5"  Content="Ngày sinh:" Grid.Row="3" Grid.Column="0"/>
+        <DatePicker HorizontalAlignment="Left" VerticalAlignment="Center" Width="122" Height="25" Margin="10,0,0,0" Name="txtNgaysinh" Grid.Row="3" Grid.Column="1" />
+
+        <Label HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5"  Content="Giới tính:" Grid.Row="4" Grid.Column="0"/>
+        <StackPanel Margin="10" Grid.Row="4" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
+            <RadioButton x:Name="rbtn_Nam" Margin="0 0 10 0" IsChecked="True">Nam</RadioButton>
+            <RadioButton x:Name="rbtn_Nu">Nữ</RadioButton>
+        </StackPanel>
+
+        <Label HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5"  Content="Phòng ban: " Grid.Row="5" Grid.Column="0"/>
+        <ComboBox SelectedIndex="0" Margin="10,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Width="165" Height="20" Name="txtPhongban" Grid.Row="5" Grid.Column="1">
+            <ComboBoxItem>Tổ chức</ComboBoxItem>
+            <ComboBoxItem>Kế hoạch</ComboBoxItem>
+            <ComboBoxItem>Vật tư</ComboBoxItem>
+        </ComboBox>
+
+        <Label HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5"   Content="Hệ số lương:" Grid.Row="6" Grid.Column="0"/>
+        <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Width="122" Height="20" Margin="10,0,0,0" Name="txtHeSoLuong" Grid.Row="6" Grid.Column="1"/>
+
+        <DataGrid ColumnHeaderStyle="{StaticResource customColumn}" AutoGenerateColumns="False" Margin="5" x:Name="ketqua" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Mã nhân viên"  Binding="{Binding MaNV}" Width="*"/>
+                <DataGridTextColumn Header="Họ tên" Binding="{Binding HoTen}" Width="*"/>
+                <DataGridTextColumn Header="Giới tính" Binding="{Binding GioiTinh}" Width="*"/>
+                <DataGridTextColumn Header="Phòng ban" Binding="{Binding PhongBan}" Width="*"/>
+                <DataGridTextColumn Header="Ngày sinh" Width="*" Binding="{Binding NgaySinh, StringFormat=dd-MM-yyyy}"/>
+                <DataGridTextColumn Header="Tuổi" Width="*" Binding="{Binding Tuoi}" CellStyle="{StaticResource customGridCell}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <StackPanel Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" Orientation="Horizontal">
+            <Button x:Name="button_Nhap" Width="70" Height="30" Margin="0 5 30 0" Click="button_Nhap_Click" Template="{StaticResource templateButton}" Style="{StaticResource styleButton}">Nhập</Button>
+            <Button x:Name="button_Window2" Width="70" Height="30"  Margin="0 5 30 0" Click="button_Window2_Click" Template="{StaticResource templateButton}" Style="{StaticResource styleButton}">Window2</Button>
+        </StackPanel>
+    </Grid>
+</Window>
